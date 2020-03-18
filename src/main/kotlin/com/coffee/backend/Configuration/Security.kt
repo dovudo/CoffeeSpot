@@ -1,16 +1,16 @@
-package com.coffee.backend
+package com.coffee.backend.Configuration
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
-import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository
 
-class Config: WebSecurityConfigurerAdapter() {
+@Configuration
+class Security: WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity?) {
         http!!.authorizeRequests().
                 antMatchers("/api/**").permitAll()
+                .antMatchers("/test/**").permitAll()
                 .antMatchers("/login").permitAll()
                 .anyRequest().permitAll()
 

@@ -1,11 +1,10 @@
 package com.coffee.backend.Models
 
-import org.hibernate.annotations.Type
-import org.hibernate.validator.constraints.Length
-import org.springframework.beans.factory.annotation.Value
 import java.io.File
-import java.nio.file.Path
-import javax.persistence.*
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 import javax.validation.constraints.Max
 import javax.validation.constraints.NotNull
 
@@ -20,16 +19,20 @@ data class Items(
         @Max(value = 15, message = "Too long name, please short it")
         val name: String,
         @Column(name = "DESCRIPTION")
+        @NotNull
         @Max(64, message = "Too long description, please short it")
-        val description: String?,
+        val description: String,
+        @Column(name = "TYPE")
+        @NotNull
+        val type:ItemType,
         @Column(name = "PRICE")
         @NotNull(message = "Price is empty, please enter the price")
-        val price: Double,
+        val price: Int,
         @NotNull
         @Column(name = "PICS")
         val pics:File
 ) {
-        constructor() : this(-1, "SomeCoffee","Some description", 16.20, File("F")) {
+        constructor() : this(-1, "SomeCoffee","Some description", ItemType.COFFEE ,20, File("F")) {
 
         }
 }

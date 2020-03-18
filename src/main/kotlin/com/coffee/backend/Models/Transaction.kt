@@ -1,7 +1,5 @@
 package com.coffee.backend.Models
 
-import org.springframework.format.annotation.DateTimeFormat
-import java.util.*
 import javax.persistence.Column
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
@@ -16,9 +14,9 @@ data class Transaction(
         @NotNull
         val items:List<Int>,
         @Column(name = "DATE")
-        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-        val date: Date,
-        @Column(name = "payment")
+        @NotNull
+        val date: String,
+        @Column(name = "PAYMENT")
         @NotNull
         val payment: Double
 )
