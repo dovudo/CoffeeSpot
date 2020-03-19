@@ -6,22 +6,27 @@ import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
+import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.ResponseStatus
 
 @ControllerAdvice
 class ExceptionHandler {
+
     val log =LoggerFactory.getLogger("ExceptionHandler")
+
     @ExceptionHandler(NotFoundException::class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
     fun notFound(e:NotFoundException): BadResponse {
         log.info(e.message)
-        return BadResponse(e.message!!, e)
+        return BadResponse(e.message!!)
     }
 
     @ExceptionHandler(Exception::class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
-    fun anyExceptions(e:java.lang.Exception){
+    @ResponseBody
+    fun anyExceptions(e:java.lang.Exception): BadResponse {
         log.warn("We got some troubles, check it please ->",e)
-        BadResponse("We got some problem :(", e)
+        return BadResponse("We got some problem :(")
     }
 }

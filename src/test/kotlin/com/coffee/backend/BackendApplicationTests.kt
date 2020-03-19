@@ -1,13 +1,17 @@
 package com.coffee.backend
 
 import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
+import java.io.File
 
-@SpringBootTest
+
 class BackendApplicationTests {
 
     @Test
     fun contextLoads() {
     }
 
+    @Test
+    fun getPathByFile() {
+        println("File size: " + File("/"))
+    }
 }
