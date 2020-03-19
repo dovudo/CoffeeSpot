@@ -29,4 +29,13 @@ class ExceptionHandler {
         log.warn("We got some troubles, check it please ->",e)
         return BadResponse("We got some problem :(")
     }
+
+    @ExceptionHandler(IllegalArgumentException::class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    fun illegalArgument(e: IllegalArgumentException): BadResponse {
+        return BadResponse(e.message.toString())
+    }
+
+    //TODO IllegalStateException
 }

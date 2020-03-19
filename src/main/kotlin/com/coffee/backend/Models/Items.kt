@@ -1,16 +1,12 @@
 package com.coffee.backend.Models
 
-import java.io.File
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
+import javax.persistence.*
 import javax.validation.constraints.Max
 import javax.validation.constraints.NotNull
 
 @Entity
 data class Items(
-        @GeneratedValue
+        @GeneratedValue(strategy = GenerationType.SEQUENCE)
         @Id
         @Column(name = "ID")
         val id: Int,
@@ -30,9 +26,9 @@ data class Items(
         val price: Int,
         @NotNull
         @Column(name = "PICS")
-        val pics:File
+        val pics:String
 ) {
-        constructor() : this(-1, "SomeCoffee","Some description", ItemType.COFFEE ,20, File("F")) {
+        constructor() : this(-1, "SomeCoffee","Some description", ItemType.COFFEE ,20, "2.jpg") {
 
         }
 }

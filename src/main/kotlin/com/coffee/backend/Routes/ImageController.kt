@@ -30,7 +30,6 @@ class ImageController(@Autowired val resources:ResourceLoader){
     @GetMapping("/api/image/{img}")
     fun getOneImage(@PathVariable("img") img:String): Resource {
         val filePath = "classpath:images/$img"
-        log.info("Get file: " + File(filePath).isFile.toString())
         if (!resources.getResource(filePath).isFile || filePath.isEmpty())
             throw NotFoundException("Image $img not found or null")
         return resources.getResource(filePath)

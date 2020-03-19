@@ -2,6 +2,7 @@ package com.coffee.backend.Routes
 
 import com.coffee.backend.Models.ItemType
 import com.coffee.backend.Models.Items
+import com.coffee.backend.Models.OkResponse
 import com.coffee.backend.Repository.ItemsRepository
 import com.google.gson.Gson
 import com.google.gson.JsonObject
@@ -44,15 +45,16 @@ class ItemController(@Autowired val itemRepo: ItemsRepository,
     }
 
     @PostMapping("/api/items")
-    fun saveItem(@RequestBody jsonItem: String) {
+    fun saveItem(@RequestBody jsonItem: String): OkResponse {
         val ss = Gson().fromJson<JsonObject>(jsonItem, JsonObject::class.java)
             val item = Items(-1,
                     ss.get("name").asString,
                     ss.get("description").asString,
-                    ss.get("type") as ItemType,
+                    ItemType.valueOf(ss.get("type").asString),
                     ss.get("price").asInt,
-                    File("nothing"))
+                    ss.get("pic").asString)
         itemRepo.save(item)
+        return OkResponse("Item was successfully added")
     }
 
     @GetMapping("/test/base64")
@@ -60,5 +62,4 @@ class ItemController(@Autowired val itemRepo: ItemsRepository,
         val base = Base64.getEncoder()
         return  base.encodeToString(File("images/pic.jpg").readBytes())
     }
-
 }
