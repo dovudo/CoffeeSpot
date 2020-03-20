@@ -15,36 +15,36 @@ import java.util.*
 class ImageController(@Autowired val resources:ResourceLoader){
 
     val log = LoggerFactory.getLogger("ImageController")
+
     @GetMapping("/api/image/all")
-    fun getTestImage(): MutableSet<Resource> {
-        val set: MutableSet<Resource> = mutableSetOf<Resource>()
+    fun getTestImage(): OkResponse {
+        val set = mutableListOf<Resource>()
         //TODO find the right path
-        println(File("classpath:images/").list())
-        File("images/").walk().forEach {
-            println(it.path)
-            set.add(resources.getResource("classpath:images/$it.name"))
+        File("./src/main/resources/images/").walk().forEach {
+            println(it.canonicalPath)
+            if(it.isFile)
+                set.add(resources.getResource("file:${it.absolutePath}"))
         }
-     return set
+     return OkResponse("Ok")
     }
 
     @GetMapping("/api/image/{img}")
     fun getOneImage(@PathVariable("img") img:String): Resource {
-        val filePath = "classpath:images/$img"
-        if (!resources.getResource(filePath).isFile || filePath.isEmpty())
+        val filePath = File("./src/main/resources/images/$img")
+        if (!filePath.isFile || filePath.isDirectory)
             throw NotFoundException("Image $img not found or null")
-        return resources.getResource(filePath)
+        return resources.getResource("file:" + filePath.absolutePath)
     }
-
 
     //TODO path????????
     @PostMapping("/api/image")
-    fun uploadPics(@RequestParam image: MultipartFile): OkResponse {
-        if(image.isEmpty)
-            return OkResponse("File is empty")
-        val uuid = UUID.randomUUID()
-        val path = File("")
-        log.debug(path.path)
-        val file = image.transferTo(path)
-        return OkResponse(uuid.toString())
+fun uploadPics(@RequestParam image: MultipartFile): OkResponse {
+    if(image.isEmpty)
+        throw IllegalArgumentException("Image is empty")
+    val uuid = UUID.randomUUID()
+    val path = File("./src/main/resources/images/$uuid${image.originalFilename}" )
+    log.info("Added new file " + path.name)
+    image.transferTo(path.absoluteFile)
+    return OkResponse(uuid.toString())
     }
 }

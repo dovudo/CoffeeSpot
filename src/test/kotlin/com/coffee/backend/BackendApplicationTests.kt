@@ -14,7 +14,7 @@ class BackendApplicationTests {
 
     @Test
     fun getPathByFile() {
-        println("File size: " + File("/"))
+        println("File path: " + File("./").absolutePath)
     }
 
     @Test

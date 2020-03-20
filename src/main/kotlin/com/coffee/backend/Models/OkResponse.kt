@@ -13,5 +13,5 @@ data class OkResponse(
         val timestamp: Long
 )
 {
-    constructor(data:String) : this(true, data, Date().time)
+    constructor(data: String) : this(true, data, Date().time)
 }
