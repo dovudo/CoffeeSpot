@@ -6,6 +6,9 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.io.Resource
 import org.springframework.core.io.ResourceLoader
+import org.springframework.http.HttpHeaders
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
 import java.io.File
@@ -16,35 +19,40 @@ class ImageController(@Autowired val resources:ResourceLoader){
 
     val log = LoggerFactory.getLogger("ImageController")
 
+
     @GetMapping("/api/image/all")
     fun getTestImage(): OkResponse {
         val set = mutableListOf<Resource>()
-        //TODO find the right path
         File("./src/main/resources/images/").walk().forEach {
-            println(it.canonicalPath)
+            log.debug(it.canonicalPath)
             if(it.isFile)
-                set.add(resources.getResource("file:${it.absolutePath}"))
-        }
+            set.add(resources.getResource("file:${it.absolutePath}"))
+    }
+        //TODO Find way for send all images
      return OkResponse("Ok")
     }
 
+    //TODO create ext checker and switch content-type of pictures
     @GetMapping("/api/image/{img}")
-    fun getOneImage(@PathVariable("img") img:String): Resource {
+    @ResponseBody
+    fun getOneImageHeader(@PathVariable("img") img:String): ResponseEntity<Resource> {
         val filePath = File("./src/main/resources/images/$img")
+        val header = HttpHeaders()
         if (!filePath.isFile || filePath.isDirectory)
             throw NotFoundException("Image $img not found or null")
-        return resources.getResource("file:" + filePath.absolutePath)
+        header.add("Content-Type", "image/jpg")
+        val res = resources.getResource("file:${filePath.absolutePath}")
+        return ResponseEntity(res, header, HttpStatus.OK)
     }
 
-    //TODO path????????
     @PostMapping("/api/image")
-fun uploadPics(@RequestParam image: MultipartFile): OkResponse {
-    if(image.isEmpty)
-        throw IllegalArgumentException("Image is empty")
-    val uuid = UUID.randomUUID()
-    val path = File("./src/main/resources/images/$uuid${image.originalFilename}" )
-    log.info("Added new file " + path.name)
-    image.transferTo(path.absoluteFile)
-    return OkResponse(uuid.toString())
+    fun uploadPics(@RequestParam image: MultipartFile): OkResponse {
+        if(image.isEmpty)
+            throw IllegalArgumentException("Image is empty")
+        val uuid = UUID.randomUUID()
+        val path = File("./src/main/resources/images/$uuid${image.originalFilename}" )
+        log.info("Added new file " + path.name)
+        image.transferTo(path.absoluteFile)
+        return OkResponse(uuid.toString())
     }
 }
