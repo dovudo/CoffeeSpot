@@ -8,11 +8,7 @@ import java.io.File
 
 class BackendApplicationTests {
 
-    @Test
-    fun contextLoads() {
-    }
-
-    @Test
+   @Test
     fun getPathByFile() {
         println("File path: " + File("./").absolutePath)
     }
@@ -22,8 +18,5 @@ class BackendApplicationTests {
         assertEquals(ItemType.valueOf("COFFEE").toString(), "COFFEE")
     }
 
-    @Test
-    fun enumPrint(){
-        println(ItemType.valueOf("COFFEE"))
-    }
+
 }

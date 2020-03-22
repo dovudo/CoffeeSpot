@@ -20,7 +20,7 @@ class ImageController(@Autowired val resources:ResourceLoader){
     val log = LoggerFactory.getLogger("ImageController")
 
 
-    @GetMapping("/api/image/all")
+    @GetMapping("/storage/images")
     fun getTestImage(): OkResponse {
         val set = mutableListOf<Resource>()
         File("./src/main/resources/images/").walk().forEach {
@@ -33,7 +33,7 @@ class ImageController(@Autowired val resources:ResourceLoader){
     }
 
     //TODO create ext checker and switch content-type of pictures
-    @GetMapping("/api/image/{img}")
+    @GetMapping("/storage/image/{img}")
     @ResponseBody
     fun getOneImageHeader(@PathVariable("img") img:String): ResponseEntity<Resource> {
         val filePath = File("./src/main/resources/images/$img")
@@ -45,7 +45,7 @@ class ImageController(@Autowired val resources:ResourceLoader){
         return ResponseEntity(res, header, HttpStatus.OK)
     }
 
-    @PostMapping("/api/image")
+    @PostMapping("/storage/image")
     fun uploadPics(@RequestParam image: MultipartFile): OkResponse {
         if(image.isEmpty)
             throw IllegalArgumentException("Image is empty")
