@@ -1,5 +1,10 @@
-FROM oracle/graalvm-ce
+FROM openjdk:15-alpine
+EXPOSE 8080
+MAINTAINER Coffee
 COPY . /usr/share/coffee-backend/
-ENTRYPOINT /usr/share/coffee-backend/
-RUN ./gradlew build
-CMD java -jar build/libs/*.jar
+WORKDIR /usr/share/coffee-backend/
+COPY ./build/libs/* ./
+RUN java -version
+RUN ls -h
+ENTRYPOINT java -jar backend.jar
+
