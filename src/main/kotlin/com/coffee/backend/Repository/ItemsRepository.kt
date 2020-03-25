@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface ItemsRepository: CrudRepository<Items,Int> {
     override fun findAll(): List<Items>
-    fun findTopById( id:Int): List<Items>
+    fun getTopById( id: Int): Items
 }

@@ -1,7 +1,6 @@
 package com.coffee.backend.Models
 
 import org.springframework.format.annotation.DateTimeFormat
-import java.time.LocalDateTime
 import javax.persistence.*
 import javax.validation.constraints.NotNull
 
@@ -9,17 +8,17 @@ import javax.validation.constraints.NotNull
 @Table
 data class Transaction(
         @Id
-        @GeneratedValue
+        @GeneratedValue(strategy = GenerationType.SEQUENCE)
         val id: Int,
 
         @OneToMany
         @JoinColumn(name= "ITEMS_ID")
-        val items: Set<Items>,
+        val items: List<Items>?,
 
         @Column(name = "DATE")
         @NotNull
         @DateTimeFormat(pattern = "yyyy-MM-dd")
-        val date: LocalDateTime = LocalDateTime.now(),
+        val date: String,
 
         @Column(name = "PAYMENT")
         @NotNull

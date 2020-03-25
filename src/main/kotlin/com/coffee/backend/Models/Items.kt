@@ -11,20 +11,25 @@ data class Items(
         @Id
         @Column(name = "ID")
         val id: Int,
+
         @Column(name = "NAME", unique = true)
         @NotNull(message = "Name should't be empty")
         @Max(value = 15, message = "Too long name, please short it")
         val name: String,
+
         @Column(name = "DESCRIPTION")
         @NotNull
         @Max(64, message = "Too long description, please short it")
         val description: String,
+
         @Column(name = "TYPE")
         @NotNull
         val type:ItemType,
+
         @Column(name = "PRICE")
         @NotNull(message = "Price is empty, please enter the price")
         val price: Int,
+
         @NotNull
         @Column(name = "PICS")
         val pics:String

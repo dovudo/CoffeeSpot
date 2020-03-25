@@ -45,5 +45,11 @@ class ExceptionHandler {
         return BadResponse("This method not supported")
     }
 
-    //TODO IllegalStateException
+    @ExceptionHandler(IllegalStateException::class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    fun illegalState(e:IllegalStateException): BadResponse {
+        log.warn(e.message)
+        return BadResponse(e.message!!)
+    }
 }

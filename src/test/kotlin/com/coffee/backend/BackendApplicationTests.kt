@@ -20,16 +20,14 @@ class BackendApplicationTests {
         assertEquals(ItemType.valueOf("COFFEE").toString(), "COFFEE")
     }
 
-@Test
-fun gsonSetTest(){
-    val items: MutableSet<Int> = mutableSetOf()
-    items.add(4)
-    items.add(3)
-    items.add(2)
-    val json = Gson().toJson(items)
-    println("Before: $json")
-    val intType = object:TypeToken<Set<Int>>() {}.type
-    val ss = Gson().fromJson(json, intType::class.java)
-    println("After: $ss")
-}
+    @Test
+    fun gsonSetTest(){
+        val items: MutableSet<Int> = mutableSetOf(2,3,13,123,44,221)
+        val json = Gson().toJson(items)
+        println("Before: $json")
+        val intType = object:TypeToken<Set<Int>>(){}.type
+        val ss = Gson().fromJson<Set<Int>>(json, intType)
+        println("After: $ss")
+        assertEquals(items, ss)
+    }
 }

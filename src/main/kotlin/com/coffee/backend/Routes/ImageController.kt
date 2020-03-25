@@ -17,14 +17,14 @@ import java.util.*
 @RestController
 class ImageController(@Autowired val resources:ResourceLoader){
 
-    val log = LoggerFactory.getLogger("ImageController")
+    val LOG = LoggerFactory.getLogger("ImageController")
 
 
     @GetMapping("/storage/images")
     fun getTestImage(): OkResponse {
         val set = mutableListOf<Resource>()
         File("./src/main/resources/images/").walk().forEach {
-            log.debug(it.canonicalPath)
+            LOG.debug(it.canonicalPath)
             if(it.isFile)
             set.add(resources.getResource("file:${it.absolutePath}"))
     }
@@ -51,7 +51,7 @@ class ImageController(@Autowired val resources:ResourceLoader){
             throw IllegalArgumentException("Image is empty")
         val uuid = UUID.randomUUID()
         val path = File("./src/main/resources/images/$uuid" )
-        log.info("Added new file " + path.name)
+        LOG.info("Added new file " + path.name)
         image.transferTo(path.absoluteFile)
         return OkResponse(uuid.toString())
     }
