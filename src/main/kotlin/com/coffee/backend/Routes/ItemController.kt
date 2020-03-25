@@ -22,12 +22,12 @@ class ItemController(@Autowired val itemRepo: ItemsRepository,
 
     val LOG = LoggerFactory.getLogger("Items")
 
-    @GetMapping("/api/items")
+    @GetMapping("/api/item")
     fun getItems(): List<Items> {
         return itemRepo.findAll()
     }
 
-    @PostMapping("/api/items")
+    @PostMapping("/api/item")
     fun saveItem(@RequestBody jsonItem: String): OkResponse {
         val ss = Gson().fromJson<JsonObject>(jsonItem, JsonObject::class.java)
             val item = Items(-1,

@@ -19,7 +19,7 @@ After first run you could starting it by next command:
 
 **Main routes:**  
 
-`/api/items` - GET - Getting all items as JSON  
+`/api/item` - GET - Getting all items as JSON  
 `/api/item` - POST - Add new item as  
 `/api/transaction` - GET Getting all transaction   
 `/api/transaction` - POST Add new transaction   
