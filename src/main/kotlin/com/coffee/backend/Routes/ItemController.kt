@@ -13,27 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
-import java.io.File
-import java.util.*
 
-
-/*
-/api/items GET - get all items
-- application/json
-Response:
-200
-{ id, name, description, price, pic }
-{ok:true}
-
-/api/items - POST - add one item
-- application/json
-Request:
-{ ok:true, result:{id, name, description, price, pic} }
-Response:
-200
-{ok:true}
-
-*/
 @RestController
 class ItemController(@Autowired val itemRepo: ItemsRepository,
                      @Autowired val resource:ResourceLoader,
@@ -55,11 +35,5 @@ class ItemController(@Autowired val itemRepo: ItemsRepository,
                     ss.get("pic").asString)
         itemRepo.save(item)
         return OkResponse("Item was successfully added")
-    }
-
-    @GetMapping("/test/base64")
-    fun testDownload(): String? {
-        val base = Base64.getEncoder()
-        return  base.encodeToString(File("images/pic.jpg").readBytes())
     }
 }

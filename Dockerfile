@@ -1,10 +1,7 @@
-FROM openjdk:15-alpine
-EXPOSE 8080
+FROM openjdk:11
 MAINTAINER Coffee
 COPY . /usr/share/coffee-backend/
 WORKDIR /usr/share/coffee-backend/
-COPY ./build/libs/* ./
-RUN java -version
-RUN ls -h
-ENTRYPOINT java -jar backend.jar
-
+RUN ./gradlew build --stacktrace
+RUN ls -h build/libs
+ENTRYPOINT java -jar build/libs/backend.jar

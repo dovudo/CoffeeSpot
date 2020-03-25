@@ -5,6 +5,7 @@ import javax.validation.constraints.Max
 import javax.validation.constraints.NotNull
 
 @Entity
+@Table
 data class Items(
         @GeneratedValue(strategy = GenerationType.SEQUENCE)
         @Id
@@ -27,8 +28,4 @@ data class Items(
         @NotNull
         @Column(name = "PICS")
         val pics:String
-) {
-        constructor() : this(-1, "SomeCoffee","Some description", ItemType.COFFEE ,20, "2.jpg") {
-
-        }
-}
+)

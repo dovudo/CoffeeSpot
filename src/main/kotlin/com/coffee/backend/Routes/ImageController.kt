@@ -50,7 +50,7 @@ class ImageController(@Autowired val resources:ResourceLoader){
         if(image.isEmpty)
             throw IllegalArgumentException("Image is empty")
         val uuid = UUID.randomUUID()
-        val path = File("./src/main/resources/images/$uuid${image.originalFilename}" )
+        val path = File("./src/main/resources/images/$uuid" )
         log.info("Added new file " + path.name)
         image.transferTo(path.absoluteFile)
         return OkResponse(uuid.toString())
