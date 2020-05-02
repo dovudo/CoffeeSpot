@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="372df5a4-dc4a-4e74-bbf4-0213b960f636" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/libs/backend.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/db.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../settings.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/kotlin/com/coffee/backend/BackendApplication.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/kotlin/com/coffee/backend/Models/BadResponse.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/kotlin/com/coffee/backend/Models/ItemType.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/kotlin/com/coffee/backend/Models/Items.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/kotlin/com/coffee/backend/Models/OkResponse.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/kotlin/com/coffee/backend/Models/Transaction.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/kotlin/com/coffee/backend/Repository/ItemsRepository.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/kotlin/com/coffee/backend/Repository/TransactionRepository.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/kotlin/com/coffee/backend/Routes/ExceptionHandler.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/kotlin/com/coffee/backend/Routes/ImageController.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/kotlin/com/coffee/backend/Routes/ItemsController.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/kotlin/com/coffee/backend/Routes/TransactionController.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/americano.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/croissant.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/espresso.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/latte.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/puer.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/tea.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/kotlin/com/coffee/backend/BackendApplicationTests.kt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1bM7FXQiiwwzd4aZ1mMUHbURQfR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="backend.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.coffee.backend.BackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="372df5a4-dc4a-4e74-bbf4-0213b960f636" name="Default Changelist" comment="" />
+      <created>1588430005814</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588430005814</updated>
+      <workItem from="1588430015506" duration="20000" />
+    </task>
+    <servers />
+  </component>
+</project>
