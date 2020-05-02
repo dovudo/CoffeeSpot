@@ -6,12 +6,10 @@ import com.coffee.backend.Models.OkResponse
 import com.coffee.backend.Repository.ItemsRepository
 import com.google.gson.Gson
 import com.google.gson.JsonObject
-import javassist.NotFoundException
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationContext
 import org.springframework.core.io.ResourceLoader
-import org.springframework.data.crossstore.ChangeSetPersister
 import org.springframework.web.bind.annotation.*
 import javax.transaction.Transactional
 
