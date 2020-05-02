@@ -10,10 +10,9 @@ import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
+import java.lang.IllegalStateException
+import javax.transaction.Transactional
 
 @RestController
 class TransactionController( @Autowired val transactionRepository: TransactionRepository,
@@ -39,8 +38,18 @@ class TransactionController( @Autowired val transactionRepository: TransactionRe
             items.add(item_tmp)
         }
         val transaction = Transaction(1, items, date, payment)
-        LOG.info("saving transaction $transaction")
+        LOG.info("Saving transaction $transaction")
         transactionRepository.save(transaction)
         return OkResponse("New transaction successfully added")
+    }
+
+    @DeleteMapping("/api/transaction")
+    @Transactional
+    fun deleteTransaction(@RequestParam("id") id:Int):OkResponse{
+        if (transactionRepository.findById(id).isEmpty)
+            throw IllegalStateException("Id not found")
+        transactionRepository.deleteTransactionById(id)
+        LOG.info("Transaction id: $id was deleted")
+        return OkResponse("Item was successfully deleted")
     }
 }

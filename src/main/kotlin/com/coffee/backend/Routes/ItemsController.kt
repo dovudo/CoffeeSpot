@@ -6,19 +6,19 @@ import com.coffee.backend.Models.OkResponse
 import com.coffee.backend.Repository.ItemsRepository
 import com.google.gson.Gson
 import com.google.gson.JsonObject
+import javassist.NotFoundException
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationContext
 import org.springframework.core.io.ResourceLoader
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.data.crossstore.ChangeSetPersister
+import org.springframework.web.bind.annotation.*
+import javax.transaction.Transactional
 
 @RestController
-class ItemController(@Autowired val itemRepo: ItemsRepository,
-                     @Autowired val resource:ResourceLoader,
-                     @Autowired val context:ApplicationContext ) {
+class ItemsController(@Autowired val itemRepo: ItemsRepository,
+                      @Autowired val resource:ResourceLoader,
+                      @Autowired val context:ApplicationContext ) {
 
     val LOG = LoggerFactory.getLogger("Items")
 
@@ -39,5 +39,15 @@ class ItemController(@Autowired val itemRepo: ItemsRepository,
         LOG.info("Save new item $item")
         itemRepo.save(item)
         return OkResponse("Item was successfully added")
+    }
+
+    @DeleteMapping("/api/item")
+    @Transactional
+    fun deleteItem(@RequestParam("id") id:Int):OkResponse {
+        if(itemRepo.findById(id).isEmpty)
+            throw IllegalStateException("Id not found")
+        itemRepo.deleteItemsById(id)
+        LOG.info("Item id: $id was deleted")
+        return OkResponse("Item was successfully deleted")
     }
 }

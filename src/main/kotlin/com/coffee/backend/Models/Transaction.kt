@@ -17,7 +17,7 @@ data class Transaction(
 
         @Column(name = "DATE")
         @NotNull
-        @DateTimeFormat(pattern = "yyyy-MM-dd")
+        @DateTimeFormat(pattern = "HH:mm yyyy-MM-dd")
         val date: String,
 
         @Column(name = "PAYMENT")

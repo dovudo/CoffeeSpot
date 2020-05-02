@@ -11,4 +11,5 @@ interface TransactionRepository: JpaRepository<Transaction,Int>{
     override fun findAll(): MutableList<Transaction>
     fun findTransactionByDate(date: LocalDateTime): MutableList<Transaction>
     fun save(newTransaction: Transaction)
+    fun deleteTransactionById(id:Int)
 }

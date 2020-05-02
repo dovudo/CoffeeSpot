@@ -32,5 +32,5 @@ data class Items(
 
         @NotNull
         @Column(name = "PICS")
-        val pics:String
+        val pic:String
 )

@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository
 interface ItemsRepository: CrudRepository<Items,Int> {
     override fun findAll(): List<Items>
     fun getTopById( id: Int): Items
+    fun deleteItemsById(id: Int)
+    fun deleteItemsByName(name:String)
 }
