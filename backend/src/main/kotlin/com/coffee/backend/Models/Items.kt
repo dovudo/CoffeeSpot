@@ -1,5 +1,6 @@
 package com.coffee.backend.Models
 
+import com.sun.istack.Nullable
 import javax.persistence.*
 import javax.validation.constraints.Max
 import javax.validation.constraints.NotNull
