@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.coffee.backend.BackendApplicationTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-05-08T22:58:21" hostname="dov-null" time="0.116">
+  <properties/>
+  <testcase name="getPathByFile()" classname="com.coffee.backend.BackendApplicationTests" time="0.022"/>
+  <testcase name="enumCheck()" classname="com.coffee.backend.BackendApplicationTests" time="0.009"/>
+  <testcase name="gsonSetTest()" classname="com.coffee.backend.BackendApplicationTests" time="0.083"/>
+  <system-out><![CDATA[File path: /home/dov/IdeaProjects/CoffeeNative/backend/.
+Before: [2,3,13,123,44,221]
+After: [2, 3, 13, 123, 44, 221]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

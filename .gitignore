@@ -1,8 +1,6 @@
 <<<<<<< HEAD
 README.md
 .gradle
-
-backend/build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
 !**/src/test/**
@@ -21,7 +19,7 @@ backend/build/
 *.iws
 *.iml
 *.ipr
-out/
+backend/out/
 
 ### NetBeans ###
 /nbproject/private/
@@ -54,7 +52,7 @@ out/
 
 # Gradle files
 .gradle/
-build/
+./backend/build/
 
 # Local configuration file (sdk path, etc)
 local.properties
