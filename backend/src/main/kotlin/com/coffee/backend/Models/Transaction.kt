@@ -1,5 +1,6 @@
 package com.coffee.backend.Models
 
+import com.sun.istack.Nullable
 import org.springframework.format.annotation.DateTimeFormat
 import javax.persistence.*
 import javax.validation.constraints.NotNull
@@ -19,6 +20,10 @@ data class Transaction(
         @NotNull
         @DateTimeFormat(pattern = "HH:mm yyyy-MM-dd")
         val date: String,
+
+        @Column(name = "COUNT")
+        @Nullable
+        val count: String?,
 
         @Column(name = "PAYMENT")
         @NotNull

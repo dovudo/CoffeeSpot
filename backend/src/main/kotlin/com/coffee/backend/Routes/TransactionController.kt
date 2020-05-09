@@ -33,11 +33,12 @@ class TransactionController( @Autowired val transactionRepository: TransactionRe
         val items = mutableListOf<Items>()
         val date = transactionJsonObject.get("date").asString
         val payment = transactionJsonObject.get("payment").asInt
+        val count = transactionJsonObject.get("count").asString
         GSON.fromJson<Set<Int>>(transactionJsonObject.get("items"), setTypeObject).forEach {
             val item_tmp = itemsRepository.getTopById(it)
             items.add(item_tmp)
         }
-        val transaction = Transaction(1, items, date, payment)
+        val transaction = Transaction(1, items, date, count, payment)
         LOG.info("Saving transaction $transaction")
         transactionRepository.save(transaction)
         return OkResponse("New transaction successfully added")

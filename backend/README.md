@@ -52,8 +52,9 @@ _id: 33_
 POST method   
 application/json    
 Ex:   
-_{ "date": "2020-03-23", "items":[33,39], "payment": 64}_   
-"items" - It's massive of item(Product) ID      
+_{ "date": "2020-03-23", "items":[33,39],"count":"Use and parse it how'd you like", " "payment": 64}_   
+items - It's massive of item(Product) ID      
+count? - it's simple string for count items (Nullable)
 payment - Int - All paid money for one transaction   
 
 `/api/transaction`   
