@@ -9,5 +9,4 @@ interface ItemsRepository: CrudRepository<Items,Int> {
     override fun findAll(): List<Items>
     fun getById( id: Int): Items
     fun deleteItemsById(id: Int)
-    fun deleteItemsByName(name:String)
 }

@@ -23,9 +23,7 @@ class TransactionController( @Autowired val transactionRepository: TransactionRe
     private val setTypeObject = object: TypeToken<Set<Int>>(){}.type
 
     @GetMapping("/api/transaction")
-    fun getAllTransaction(@RequestParam date:String? = null): MutableList<Transaction>{
-        if(date != null)
-            return transactionRepository.findByDateContaining(date)
+    fun getAllTransaction(): MutableList<Transaction>{
         return transactionRepository.findAll()
     }
 
@@ -36,8 +34,8 @@ class TransactionController( @Autowired val transactionRepository: TransactionRe
         val date = transactionJsonObject.get("date").asString
         val payment = transactionJsonObject.get("payment").asInt
         val count = transactionJsonObject.get("count").asString
-        GSON.fromJson<List<Int>>(transactionJsonObject.get("items"), setTypeObject).forEach {
-            val item_tmp = itemsRepository.getById(it)
+        GSON.fromJson<Set<Int>>(transactionJsonObject.get("items"), setTypeObject).forEach {
+            val item_tmp = itemsRepository.getTopById(it)
             items.add(item_tmp)
         }
         val transaction = Transaction(1, items, date, count, payment)
