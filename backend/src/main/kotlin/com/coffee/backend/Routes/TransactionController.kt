@@ -35,7 +35,7 @@ class TransactionController( @Autowired val transactionRepository: TransactionRe
         val payment = transactionJsonObject.get("payment").asInt
         val count = transactionJsonObject.get("count").asString
         GSON.fromJson<Set<Int>>(transactionJsonObject.get("items"), setTypeObject).forEach {
-            val item_tmp = itemsRepository.getTopById(it)
+            val item_tmp = itemsRepository.getById(it)
             items.add(item_tmp)
         }
         val transaction = Transaction(1, items, date, count, payment)
