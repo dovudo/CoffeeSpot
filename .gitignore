@@ -5,6 +5,11 @@ README.md
 !**/src/main/**
 !**/src/test/**
 
+
+**/.gradle
+**/build
+**/.idea
+
 ### STS ###
 .apt_generated
 .classpath

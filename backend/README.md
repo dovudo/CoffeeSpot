@@ -49,6 +49,9 @@ Ex:
 _id: 33_
 
 `/api/transaction`   
+GET method 
+
+`/api/transaction`   
 POST method   
 application/json    
 Ex:   
