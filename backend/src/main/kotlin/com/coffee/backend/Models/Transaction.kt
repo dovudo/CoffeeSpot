@@ -13,19 +13,14 @@ data class Transaction(
         @GeneratedValue(strategy = GenerationType.SEQUENCE)
         val id: Int,
 
-        @OneToMany
-        @JoinColumn(name= "ITEMS_ID")
-        val items: List<Items>?,
+        @Nullable
+        @Column(name = "ITEMS")
+        val items: String?,
 
         @Column(name = "DATE")
         @NotNull
         @DateTimeFormat(pattern = "HH:mm yyyy-MM-dd")
         val date: String,
-
-        @Column(name = "COUNT")
-        @Nullable
-        @Max(1024)
-        val count: String?,
 
         @Column(name = "PAYMENT")
         @NotNull

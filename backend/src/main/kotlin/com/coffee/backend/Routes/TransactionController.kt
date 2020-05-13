@@ -30,15 +30,10 @@ class TransactionController( @Autowired val transactionRepository: TransactionRe
     @PostMapping("/api/transaction")
     fun saveTransaction(@RequestBody data: String): OkResponse {
         val transactionJsonObject = GSON.fromJson<JsonObject>(data, JsonObject::class.java)
-        val items = mutableListOf<Items>()
         val date = transactionJsonObject.get("date").asString
         val payment = transactionJsonObject.get("payment").asInt
-        val count = transactionJsonObject.get("count").asString
-        GSON.fromJson<Set<Int>>(transactionJsonObject.get("items"), setTypeObject).forEach {
-            val item_tmp = itemsRepository.getTopById(it)
-            items.add(item_tmp)
-        }
-        val transaction = Transaction(1, items, date, count, payment)
+        val items = transactionJsonObject.get("items").asString
+        val transaction = Transaction(1, items, date, payment)
         LOG.info("Saving transaction $transaction")
         transactionRepository.save(transaction)
         return OkResponse("New transaction successfully added")
