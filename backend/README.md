@@ -22,12 +22,12 @@ Run in terminal `java -jar backend.jar`
 
 `/api/item` - GET - Getting all items as JSON  
 `/api/item` - POST - Add new item as  
-`/api/item` - DELETE - Remove item by ID
-`/api/transaction` - GET - Getting all transaction   
-`/api/transaction` - POST - Add new transaction
-`/api/transaction` - DELETE - Remove transaction by ID   
-`/storage/image/{img}` - GET - Getting image by name (The name you could get in item)  
-`/storage/image` - POST - Adding new picture and return the uuid name of that pic   
+`/api/item` - DELETE - Remove item by ID      
+`/api/transaction` - GET - Getting all transaction      
+`/api/transaction` - POST - Add new transaction    
+`/api/transaction` - DELETE - Remove transaction by ID       
+`/storage/image/{img}` - GET - Getting image by name (The name you could get in item)     
+`/storage/image` - POST - Adding new picture and return the uuid name of that pic       
 
 
 **Description for routes**   

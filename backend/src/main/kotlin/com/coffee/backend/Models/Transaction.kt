@@ -3,6 +3,7 @@ package com.coffee.backend.Models
 import com.sun.istack.Nullable
 import org.springframework.format.annotation.DateTimeFormat
 import javax.persistence.*
+import javax.validation.constraints.Max
 import javax.validation.constraints.NotNull
 
 @Entity
@@ -23,6 +24,7 @@ data class Transaction(
 
         @Column(name = "COUNT")
         @Nullable
+        @Max(1024)
         val count: String?,
 
         @Column(name = "PAYMENT")
