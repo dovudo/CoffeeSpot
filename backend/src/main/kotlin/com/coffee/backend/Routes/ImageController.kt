@@ -21,18 +21,12 @@ class ImageController(@Autowired val resources:ResourceLoader){
 
 
     @GetMapping("/storage/images")
-    fun getTestImage(): OkResponse {
-        val set = mutableListOf<Resource>()
-        File("./src/main/resources/images/").walk().forEach {
-            LOG.debug(it.canonicalPath)
-            if(it.isFile)
-            set.add(resources.getResource("file:${it.absolutePath}"))
-    }
-        //TODO Find way for send all images
-     return OkResponse("Ok")
+    fun getTestImage(): MutableSet<String> {
+        val nameSet = mutableSetOf<String>()
+        File("./src/main/resources/images/").walk().forEach {nameSet.add(it.name)}
+       return nameSet
     }
 
-    //TODO create ext checker and switch content-type of pictures
     @GetMapping("/storage/image/{img}")
     @ResponseBody
     fun getOneImageHeader(@PathVariable("img") img:String): ResponseEntity<Resource> {

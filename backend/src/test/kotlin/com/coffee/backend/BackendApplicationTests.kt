@@ -3,10 +3,10 @@ package com.coffee.backend
 import com.coffee.backend.Models.ItemType
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import de.codecentric.boot.admin.server.config.EnableAdminServer
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.io.File
-
 
 class BackendApplicationTests {
 

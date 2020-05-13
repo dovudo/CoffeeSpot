@@ -28,7 +28,7 @@ Run in terminal `java -jar backend.jar`
 `/api/transaction` - DELETE - Remove transaction by ID       
 `/storage/image/{img}` - GET - Getting image by name (The name you could get in item)     
 `/storage/image` - POST - Adding new picture and return the uuid name of that pic       
-
+`/storage/images` - Get all images 
 
 **Description for routes**   
 `/storage/image` :   
