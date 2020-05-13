@@ -2,7 +2,7 @@ FROM openjdk:11
 MAINTAINER Coffee
 COPY . /usr/share/coffee-backend/
 WORKDIR /usr/share/coffee-backend/
-RUN bash ./gradlew build --stacktrace
+RUN bash ./gradlew clean build --stacktrace
 RUN ls -h build/libs
-COPY ./build/libs/* .
+COPY ./build/libs/backend.jar ./backend.jar
 ENTRYPOINT java -jar ./backend.jar
